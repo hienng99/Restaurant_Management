@@ -13,13 +13,7 @@ public class BillItem {
     private Long billId;
 
     @Column(nullable = false)
-    private Integer menuItemId;
-
-    @Column(nullable = false)
-    private String menuItemName;
-
-    @Column(nullable = false)
-    private Double menuItemPrice;
+    private Long menuItemId;
 
     @Column(nullable = false)
     private Double quantity;
@@ -32,8 +26,6 @@ public class BillItem {
                 "billItemId=" + getBillItemId() +
                 ", billId=" + getBillId() +
                 ", menuItemId=" + getMenuItemId() +
-                ", menuItemName='" + getMenuItemName() + '\'' +
-                ", menuItemPrice=" + getMenuItemPrice() +
                 ", quantity=" + getQuantity() +
                 ", orderedTime=" + getOrderedTime() +
                 '}';
@@ -55,28 +47,12 @@ public class BillItem {
         this.billId = billId;
     }
 
-    public Integer getMenuItemId() {
+    public Long getMenuItemId() {
         return menuItemId;
     }
 
-    public void setMenuItemId(Integer menuItemId) {
+    public void setMenuItemId(Long menuItemId) {
         this.menuItemId = menuItemId;
-    }
-
-    public String getMenuItemName() {
-        return menuItemName;
-    }
-
-    public void setMenuItemName(String menuItemName) {
-        this.menuItemName = menuItemName;
-    }
-
-    public Double getMenuItemPrice() {
-        return menuItemPrice;
-    }
-
-    public void setMenuItemPrice(Double menuItemPrice) {
-        this.menuItemPrice = menuItemPrice;
     }
 
     public Double getQuantity() {
