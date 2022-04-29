@@ -1,9 +1,10 @@
-package com.nvhien.restaurantmanagement.model;
+package com.nvhien.restaurantmanagement.dto;
 
 import java.util.List;
 
 public class BillResponseObject {
     private Long billId;
+    private Double total;
     private List<BillItemResponseObject> items;
 
     public BillResponseObject() {
@@ -19,6 +20,14 @@ public class BillResponseObject {
 
     public List<BillItemResponseObject> getItems() {
         return items;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
     public void setItems(List<BillItemResponseObject> items) {
