@@ -1,4 +1,4 @@
-package com.nvhien.restaurantmanagement.repositories;
+package com.nvhien.restaurantmanagement.repository;
 
 import com.nvhien.restaurantmanagement.model.MenuItem;
 import org.springframework.data.jpa.repository.JpaRepository;

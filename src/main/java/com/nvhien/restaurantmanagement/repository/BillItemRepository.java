@@ -1,4 +1,4 @@
-package com.nvhien.restaurantmanagement.repositories;
+package com.nvhien.restaurantmanagement.repository;
 
 import com.nvhien.restaurantmanagement.model.BillItem;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface BillItemRepository extends JpaRepository<BillItem, Long> {
-    @Query(value = "SELECT * FROM bill_item WHERE bill_id = ?1", nativeQuery = true)
+    @Query("SELECT item FROM BillItem item WHERE item.billId = ?1")
     List<BillItem> findAllByBillId(Long billId);
 }

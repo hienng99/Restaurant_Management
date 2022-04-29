@@ -1,13 +1,14 @@
-package com.nvhien.restaurantmanagement.model;
+package com.nvhien.restaurantmanagement.dto;
 
-public class BillItemResponseObject {
+public class BillItemRequestObject {
     private Long menuItemId;
-    private String menuItemName;
-    private Double menuItemPrice;
     private Double quantity;
     private Long orderedTime;
 
-    public BillItemResponseObject() {
+    public BillItemRequestObject(Long menuItemId, Double quantity, Long orderedTime) {
+        this.menuItemId = menuItemId;
+        this.quantity = quantity;
+        this.orderedTime = orderedTime;
     }
 
     public Long getMenuItemId() {
@@ -16,22 +17,6 @@ public class BillItemResponseObject {
 
     public void setMenuItemId(Long menuItemId) {
         this.menuItemId = menuItemId;
-    }
-
-    public String getMenuItemName() {
-        return menuItemName;
-    }
-
-    public void setMenuItemName(String menuItemName) {
-        this.menuItemName = menuItemName;
-    }
-
-    public Double getMenuItemPrice() {
-        return menuItemPrice;
-    }
-
-    public void setMenuItemPrice(Double menuItemPrice) {
-        this.menuItemPrice = menuItemPrice;
     }
 
     public Double getQuantity() {

@@ -1,4 +1,4 @@
-package com.nvhien.restaurantmanagement.model;
+package com.nvhien.restaurantmanagement.dto;
 
 public class ResponseObject {
     private String status;
