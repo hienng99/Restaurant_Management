@@ -1,9 +1,12 @@
 package com.nvhien.restaurantmanagement.controller;
 
-import com.nvhien.restaurantmanagement.model.MenuItem;
-import com.nvhien.restaurantmanagement.dto.ResponseObject;
-import com.nvhien.restaurantmanagement.repository.MenuItemRepository;
-import com.nvhien.restaurantmanagement.service.MenuService;
+import com.nvhien.restaurantmanagement.common.Constant;
+import com.nvhien.restaurantmanagement.model.entity.MenuItem;
+import com.nvhien.restaurantmanagement.model.exception.MenuItemNameAlreadyExistException;
+import com.nvhien.restaurantmanagement.model.exception.MenuItemNotFoundException;
+import com.nvhien.restaurantmanagement.model.mapper.ResponseBodyMapper;
+import com.nvhien.restaurantmanagement.model.mapper.ResponseEntityMapper;
+import com.nvhien.restaurantmanagement.service.MenuItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,30 +15,49 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/api/menu")
 public class MenuController {
     @Autowired
-    private MenuService service;
+    private MenuItemService service;
 
-    @GetMapping("")
-    ResponseEntity<ResponseObject> listMenuItem() {
-        return service.list();
+    @GetMapping("/")
+    public ResponseEntity listAllItems() {
+        return ResponseEntityMapper.createSuccessResponse(ResponseBodyMapper.create("List menu items successfully.", service.listAll()));
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<ResponseObject> getOneMenuItem(@PathVariable Long id) {
-        return service.getOne(id);
+    public ResponseEntity getOneItem(@PathVariable Long id) {
+        try {
+            return ResponseEntityMapper.createSuccessResponse(ResponseBodyMapper.create("Get menu item successfully.", service.get(id)));
+        } catch (MenuItemNotFoundException e) {
+            return ResponseEntityMapper.createFailedResponse(ResponseBodyMapper.create(e.getMessage(), Constant.EMPTY_STRING));
+        }
     }
 
     @PostMapping("/")
-    ResponseEntity<ResponseObject> createMenuItem(@RequestBody MenuItem newMenuItem) {
-        return service.create(newMenuItem);
+    public ResponseEntity createNewItem(@RequestBody MenuItem item) {
+        try {
+            service.create(item);
+            return ResponseEntityMapper.createSuccessResponse(ResponseBodyMapper.create("Create menu item successfully.", Constant.EMPTY_STRING));
+        } catch (MenuItemNameAlreadyExistException e) {
+            return ResponseEntityMapper.createFailedResponse(ResponseBodyMapper.create(e.getMessage(), Constant.EMPTY_STRING));
+        }
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<ResponseObject> updateMenuItem(@PathVariable Long id, @RequestBody MenuItem newMenuItem) {
-        return service.update(id, newMenuItem);
+    public ResponseEntity updateItem(@PathVariable Long id, @RequestBody MenuItem item) {
+        try {
+            service.update(id, item);
+            return ResponseEntityMapper.createSuccessResponse(ResponseBodyMapper.create("Update menu item successfully.", Constant.EMPTY_STRING));
+        } catch (MenuItemNotFoundException e) {
+            return ResponseEntityMapper.createFailedResponse(ResponseBodyMapper.create(e.getMessage(), Constant.EMPTY_STRING));
+        }
     }
 
-    @DeleteMapping("/{id}")
-    ResponseEntity<ResponseObject> deleteMenuItem(@PathVariable Long id) {
-        return service.delete(id);
+    @DeleteMapping("{id}")
+    public ResponseEntity deleteItem(@PathVariable Long id) {
+        try {
+            service.delete(id);
+            return ResponseEntityMapper.createSuccessResponse(ResponseBodyMapper.create("Delete menu item successfully.", Constant.EMPTY_STRING));
+        } catch (MenuItemNotFoundException e) {
+            return ResponseEntityMapper.createFailedResponse(ResponseBodyMapper.create(e.getMessage(), Constant.EMPTY_STRING));
+        }
     }
 }
