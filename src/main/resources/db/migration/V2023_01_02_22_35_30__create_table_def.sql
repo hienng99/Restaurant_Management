@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS `def` (
+    `id` INT PRIMARY KEY
+)
