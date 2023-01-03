@@ -11,10 +11,11 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @ToString
-public class Bill {
+public class Category {
     @Id
     private Long id;
 
+    private String name;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 }

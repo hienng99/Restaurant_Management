@@ -1,74 +1,26 @@
 package com.nvhien.restaurantmanagement.model.entity;
 
-import javax.persistence.*;
+import lombok.*;
 
-@Entity(name = "BillItem")
-@Table(name = "bill_item")
+import javax.persistence.*;
+import java.sql.Timestamp;
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class BillItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long billItemId;
+    private Long id;
 
     @ManyToOne
     private Bill bill;
 
     @ManyToOne
-    private MenuItem menuItem;
+    private Item item;
 
-    @Column(nullable = false)
-    private Double quantity;
-
-    @Column
-    private Long orderedTime;
-
-    @Override
-    public String toString() {
-        return "BillItem{" +
-                "billItemId=" + billItemId +
-                ", bill=" + bill +
-                ", menuItem=" + menuItem +
-                ", quantity=" + quantity +
-                ", orderedTime=" + orderedTime +
-                '}';
-    }
-
-    public Long getBillItemId() {
-        return billItemId;
-    }
-
-    public void setBillItemId(Long billItemId) {
-        this.billItemId = billItemId;
-    }
-
-    public Bill getBill() {
-        return bill;
-    }
-
-    public void setBill(Bill bill) {
-        this.bill = bill;
-    }
-
-    public MenuItem getMenuItem() {
-        return menuItem;
-    }
-
-    public void setMenuItem(MenuItem menuItem) {
-        this.menuItem = menuItem;
-    }
-
-    public Double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Double quantity) {
-        this.quantity = quantity;
-    }
-
-    public Long getOrderedTime() {
-        return orderedTime;
-    }
-
-    public void setOrderedTime(Long orderedTime) {
-        this.orderedTime = orderedTime;
-    }
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 }

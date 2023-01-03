@@ -11,10 +11,15 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @ToString
-public class Bill {
+public class Item {
     @Id
-    private Long id;
+    private long id;
 
+    private String name;
+    private String description;
+    private String image;
+    private String unit;
+    private float price;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 }
