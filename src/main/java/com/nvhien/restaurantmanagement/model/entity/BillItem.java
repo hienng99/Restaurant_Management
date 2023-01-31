@@ -21,6 +21,7 @@ public class BillItem {
     @ManyToOne
     private Item item;
 
+    private double quantity;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 }

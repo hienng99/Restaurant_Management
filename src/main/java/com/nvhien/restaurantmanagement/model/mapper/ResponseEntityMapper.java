@@ -1,6 +1,5 @@
 package com.nvhien.restaurantmanagement.model.mapper;
 
-import com.nvhien.restaurantmanagement.common.Constant;
 import com.nvhien.restaurantmanagement.model.dto.ResponseBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

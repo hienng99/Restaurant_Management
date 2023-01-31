@@ -1,22 +1,11 @@
 package com.nvhien.restaurantmanagement.service;
 
-import com.nvhien.restaurantmanagement.common.Constant;
-import com.nvhien.restaurantmanagement.model.dto.BillItemResponseObject;
-import com.nvhien.restaurantmanagement.model.dto.BillResponseObject;
 import com.nvhien.restaurantmanagement.model.entity.Bill;
-import com.nvhien.restaurantmanagement.model.entity.BillItem;
-import com.nvhien.restaurantmanagement.model.entity.MenuItem;
 import com.nvhien.restaurantmanagement.model.exception.BillNotFoundException;
-import com.nvhien.restaurantmanagement.model.exception.MenuItemNotFoundException;
-import com.nvhien.restaurantmanagement.model.mapper.BillItemResponseMapper;
-import com.nvhien.restaurantmanagement.model.mapper.BillResponseMapper;
 import com.nvhien.restaurantmanagement.repository.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
