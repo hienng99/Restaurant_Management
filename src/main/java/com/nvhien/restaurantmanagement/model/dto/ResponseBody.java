@@ -1,30 +1,16 @@
 package com.nvhien.restaurantmanagement.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class ResponseBody {
+    private int code;
     private String message;
     private Object data;
-
-    public ResponseBody() {
-    }
-
-    public ResponseBody(String message, Object data) {
-        this.message = message;
-        this.data = data;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
 }

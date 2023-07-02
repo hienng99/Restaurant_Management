@@ -17,4 +17,5 @@ public class Bill {
 
     private Timestamp createdAt;
     private Timestamp updatedAt;
+    private double total;
 }

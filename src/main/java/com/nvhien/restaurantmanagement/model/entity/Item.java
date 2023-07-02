@@ -19,7 +19,7 @@ public class Item {
     private String description;
     private String image;
     private String unit;
-    private float price;
+    private double price;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 }
