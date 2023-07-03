@@ -32,15 +32,15 @@ public class MenuController {
         }
     }
 
-//    @PostMapping("/")
-//    public ResponseEntity createNewItem(@RequestBody Item item) {
-//        try {
-//            service.create(item);
-//            return ResponseEntityMapper.createSuccessResponse(ResponseBodyMapper.create("Create menu item successfully.", Constant.EMPTY_STRING));
-//        } catch (ItemNameAlreadyExistException e) {
-//            return ResponseEntityMapper.createFailedResponse(ResponseBodyMapper.create(e.getMessage(), Constant.EMPTY_STRING));
-//        }
-//    }
+    @PostMapping("/")
+    public ResponseEntity createNewItem(@RequestBody Item item) {
+        try {
+            service.create(item);
+            return ResponseEntityMapper.createSuccessResponse(ResponseBodyMapper.create(0, "Create menu item successfully.", Constant.EMPTY_STRING));
+        } catch (ItemNameAlreadyExistException e) {
+            return ResponseEntityMapper.createFailedResponse(ResponseBodyMapper.create(400, e.getMessage(), Constant.EMPTY_STRING));
+        }
+    }
 //
 //    @PutMapping("/{id}")
 //    public ResponseEntity updateItem(@PathVariable Long id, @RequestBody Item item) {
