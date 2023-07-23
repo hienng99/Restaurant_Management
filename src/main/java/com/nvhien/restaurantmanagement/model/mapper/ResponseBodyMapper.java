@@ -1,10 +1,9 @@
 package com.nvhien.restaurantmanagement.model.mapper;
 
-import com.nvhien.restaurantmanagement.common.Constant;
-import com.nvhien.restaurantmanagement.model.dto.ResponseBody;
-import lombok.NoArgsConstructor;
+import com.nvhien.restaurantmanagement.model.dto.Response;
+
 public class ResponseBodyMapper {
-    public static <T> ResponseBody create(int code, String message, T data) {
-        return new ResponseBody(code, message, data);
+    public static <T> Response create(int code, String message, T data) {
+        return new Response(code, message, data);
     }
 }
