@@ -1,6 +1,8 @@
 package com.nvhien.restaurantmanagement.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +11,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ResponseBody {
+@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Response {
     private int code;
     private String message;
     private Object data;
