@@ -1,25 +1,9 @@
 package com.nvhien.restaurantmanagement.controller;
 
-import com.nvhien.restaurantmanagement.common.Constant;
-import com.nvhien.restaurantmanagement.model.dto.BillItemRequestObject;
-import com.nvhien.restaurantmanagement.model.dto.BillItemResponseObject;
-import com.nvhien.restaurantmanagement.model.dto.BillResponseObject;
-import com.nvhien.restaurantmanagement.model.entity.Bill;
-import com.nvhien.restaurantmanagement.model.entity.BillItem;
-import com.nvhien.restaurantmanagement.model.entity.Item;
-import com.nvhien.restaurantmanagement.model.exception.BillItemNotFoundException;
-import com.nvhien.restaurantmanagement.model.exception.BillNotFoundException;
-import com.nvhien.restaurantmanagement.model.exception.ItemNotFoundException;
-import com.nvhien.restaurantmanagement.model.mapper.*;
-import com.nvhien.restaurantmanagement.service.BillItemService;
 import com.nvhien.restaurantmanagement.service.BillService;
 import com.nvhien.restaurantmanagement.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/bill")
@@ -27,8 +11,8 @@ public class BillController {
     @Autowired
     private BillService billService;
 
-    @Autowired
-    private BillItemService billItemService;
+//    @Autowired
+//    private BillItemService billItemService;
 
     @Autowired
     private ItemService itemService;

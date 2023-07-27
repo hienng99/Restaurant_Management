@@ -1,7 +1,7 @@
 package com.nvhien.restaurantmanagement.service;
 
 import com.nvhien.restaurantmanagement.model.entity.Item;
-import com.nvhien.restaurantmanagement.model.exception.ItemNameAlreadyExistException;
+import com.nvhien.restaurantmanagement.model.exception.ItemAlreadyExistException;
 import com.nvhien.restaurantmanagement.model.exception.ItemNotFoundException;
 import com.nvhien.restaurantmanagement.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +19,10 @@ public class ItemService {
         return repository.findAll();
     }
 
-    public void create(Item item) throws ItemNameAlreadyExistException {
+    public void create(Item item) throws ItemAlreadyExistException {
         String itemName = item.getName();
         if (repository.existsByName(itemName)) {
-            throw new ItemNameAlreadyExistException("The item with name=" + itemName + " is already exist.");
+            throw new ItemAlreadyExistException("The item with name=" + itemName + " is already exist.");
         }
         repository.save(item);
     }

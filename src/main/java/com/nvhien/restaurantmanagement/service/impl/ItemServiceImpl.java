@@ -1,6 +1,7 @@
 package com.nvhien.restaurantmanagement.service.impl;
 
 import com.nvhien.restaurantmanagement.model.entity.Item;
+import com.nvhien.restaurantmanagement.model.exception.ItemAlreadyExistException;
 import com.nvhien.restaurantmanagement.model.exception.ItemNotFoundException;
 import com.nvhien.restaurantmanagement.repository.ItemRepository;
 import com.nvhien.restaurantmanagement.service.itf.ItemService;
@@ -23,8 +24,15 @@ public class ItemServiceImpl implements ItemService {
     public Item get(long id) throws ItemNotFoundException {
         if (repository.existsById(id)) {
             return repository.getById(id);
-        } else {
-            throw new ItemNotFoundException("Item does not exist.");
         }
+        throw new ItemNotFoundException("Item does not exist.");
+    }
+
+    @Override
+    public Item create(Item item) throws ItemAlreadyExistException {
+        if (repository.existsByName(item.getName())) {
+            throw new ItemAlreadyExistException("Item already exist.");
+        }
+        return repository.save(item);
     }
 }
